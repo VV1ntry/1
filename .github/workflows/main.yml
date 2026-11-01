@@ -1,3 +1,0 @@
-- name: chatgpt-action
-  uses: unsafecoerce/chatgpt-action@release/v2
-  
