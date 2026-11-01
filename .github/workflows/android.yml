@@ -8,6 +8,18 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - name: Fix folder name case
+        run: |
+          [ -d App ] && mv App app
+          [ -d app/Src ] && mv app/Src app/src
+          [ -d app/src/Main ] && mv app/src/Main app/src/main
+          [ -d app/src/main/Res ] && mv app/src/main/Res app/src/main/res
+          [ -d app/src/main/res/Xml ] && mv app/src/main/res/Xml app/src/main/res/xml
+          [ -d app/src/main/res/Values ] && mv app/src/main/res/Values app/src/main/res/values
+          [ -d app/src/main/Java ] && mv app/src/main/Java app/src/main/java
+          [ -d app/src/main/java/Com ] && mv app/src/main/java/Com app/src/main/java/com
+          [ -d app/src/main/java/com/novelflow/Reader ] && mv app/src/main/java/com/novelflow/Reader app/src/main/java/com/novelflow/reader
+          find app -type f
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
